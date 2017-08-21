@@ -1,0 +1,100 @@
+@import "/_normalize.scss";
+@import "/mixins/_smart-grid.scss";
+@import "mixins/_constants";
+@import "mixins/_mixins";
+@import "mixins/_margin";
+@import "mixins/_padding";
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+$fa-font-path:"~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+@import "_chat";
+
+/*Common*/
+
+html {
+    font-size: 62.5%;
+}
+
+.float-none{
+    float: none !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.input-group-btn{
+    &>.btn{
+        height: 34px;
+    }
+}
+
+.alert-default{
+    color: #999999;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+/*Headers*/
+
+.navbar-header>.navbar-brand {
+    float: right;
+}
+
+.navbar-header>img {
+    float: left;
+    margin: 10px;
+}
+
+
+/*Shadows*/
+
+.box-shadow-1 {
+    @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24))
+}
+
+.box-shadow-2 {
+    @include box-shadow(0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23))
+}
+
+.box-shadow-3 {
+    @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23))
+}
+
+.box-shadow-4 {
+    @include box-shadow(0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22))
+}
+
+.box-shadow-5 {
+    @include box-shadow(0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22))
+}
+
+
+/*Form Validation Classes*/
+
+.field-validation-error {
+    color: $Red;
+    font-size: 13px;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error,
+textarea.input-validation-error {
+    border: 1px solid $Red;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: $Red;
+}
+
+.validation-summary-valid {
+    display: none;
+}

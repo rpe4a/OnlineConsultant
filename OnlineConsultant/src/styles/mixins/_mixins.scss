@@ -1,0 +1,152 @@
+@mixin prefixify($CssProp, $values){
+	-webkit-#{$CssProp}: $values;
+	-moz-#{$CssProp}: $values;
+	-ms-#{$CssProp}: $values;
+	#{$CssProp}: $values;
+}
+
+@mixin border-radius($value){
+	-webkit-border-radius: $value;
+	-moz-border-radius: $value;
+	border-radius: $value;
+}
+
+@mixin user-select($value){
+	-webkit-pointer-events: $value;
+    pointer-events: $value;
+    -webkit-user-select: $value;
+    -moz-user-select: $value;
+    user-select: $value;
+}
+
+@mixin box-shadow($values){
+	-webkit-box-shadow: $values;
+	-moz-box-shadow: $values;
+	box-shadow: $values;
+}
+
+@mixin transition($values){
+	-webkit-transition: $values;
+	-moz-transition: $values;
+	-ms-transition: $values;
+	-o-transition: $values;
+	transition: $values;
+}
+
+@mixin opacity($value){
+    opacity: $value;
+    -khtml-opacity: $value;
+    -moz-opacity: $value;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value * 100})";
+    filter:alpha(opacity=$value * 100);
+}
+
+@mixin transform($value){
+	-moz-transform: $value;
+	-webkit-transform: $value;
+	-o-transform: $value;
+	-ms-transform: $value;
+	transform: $value;
+}
+
+@mixin overlay{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 3;
+	background: rgba(0,0,0,0.7);
+}
+
+@mixin border($values){
+	@each $border, $value in $values{
+		@if $border == top{
+			border-top: $value;
+		} @else if $border == bottom {
+			border-bottom: $value;
+		} @else if $border == left {
+			border-left: $value;
+		} @else if $border == right {
+			border-right: $value;
+		}
+	}
+}
+
+@mixin location($values){
+	@each $side, $value in $values{
+		@if $side == top{
+			top: $value;
+		} @else if $side == bottom {
+			bottom: $value;
+		} @else if $side == left {
+			left: $value;
+		} @else if $side == right {
+			right: $value;
+		}
+	}
+}
+
+@mixin respond-to($media) {
+	@if $media==$break_xs {
+		@media only screen and (max-width: $break_xs) {
+			@content;
+		}
+	}
+	@if $media==$break_sm {
+		@media only screen and (max-width: $break_sm) {
+			@content;
+		}
+	}
+	@if $media==$break_md {
+		@media only screen and (max-width: $break_md) {
+			@content;
+		}
+	}
+	@if $media==$break_lg {
+		@media only screen and (max-width: $break_lg) {
+			@content;
+		}
+	}
+}
+
+@for $size from 1 through 12 {
+	.col-#{$size} {
+		width: #{calc(#{$size} * 8.333333333333334% - 30px)};
+	}
+	@include respond-to($break_lg) {
+		.col-lg-#{$size} {
+			width: #{calc(#{$size} * 8.333333333333334% - 30px)};
+		}
+	}
+	@include respond-to($break_md) {
+		.col-md-#{$size} {
+			width: #{calc(#{$size} * 8.333333333333334% - 30px)};
+		}
+	}
+	@include respond-to($break_sm) {
+		.col-sm-#{$size} {
+			width: #{calc(#{$size} * 8.333333333333334% - 30px)};
+		}
+	}
+	@include respond-to($break_xs) {
+		.col-xs-#{$size} {
+			width: #{calc(#{$size} * 8.333333333333334% - 30px)};
+		}
+	}
+}
+
+@for $size from 1 through 12{
+	.col-order-#{$size}{
+		order: $size;
+	}
+
+	.col-order-reverse-#{$size}{
+		order: -$size;
+	}
+}
+
+@mixin col-order($value){
+	order: $value;
+}

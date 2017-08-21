@@ -1,0 +1,33 @@
+@for $size from 0 through 10 {
+	.margin-#{$size} {
+		margin: #{$size}rem;
+	}
+
+	.margin-lr-#{$size} {
+		margin: 0 #{$size}rem;
+	}
+
+	.margin-r-#{$size} {
+		margin-right: #{$size}rem;
+	}
+
+	.margin-l-#{$size} {
+		margin-left: #{$size}rem;
+	}
+
+	.margin-tb-#{$size} {
+		margin: #{$size}rem 0;
+	}
+
+	.margin-t-#{$size} {
+		margin-top: #{$size}rem;
+	}
+
+	.margin-b-#{$size} {
+		margin-bottom: #{$size}rem;
+	}
+}
+
+.margin-auto{
+	margin: 0 auto;
+}

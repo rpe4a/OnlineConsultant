@@ -1,0 +1,57 @@
+﻿@using OnlineConsultant.Models;
+@model RegistrationModel
+@{
+    ViewBag.Title = "Главаная";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-5 margin-auto float-none">
+         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+         {
+             <div class="panel panel-default box-shadow-2">
+
+                 <div class="panel-heading text-center">
+                     <h4>Форма регистраций</h4>
+                 </div>
+                 <div class="panel-body">
+                     <div class="form-group">
+                         @Html.LabelFor(x => x.Surname)
+                         @Html.TextBoxFor(x => x.Surname, new {@class = "form-control"})
+                         @Html.ValidationMessageFor(model => model.Surname)
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(x => x.Name)
+                         @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
+                         @Html.ValidationMessageFor(model => model.Name)
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(x => x.FirstName)
+                         @Html.TextBoxFor(x => x.FirstName, new {@class = "form-control"})
+                         @Html.ValidationMessageFor(model => model.FirstName)
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(x => x.Email)
+                         @Html.TextBoxFor(x => x.Email, new {@class = "form-control"})
+                         @Html.ValidationMessageFor(model => model.Email)
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(x => x.Question)
+                         @Html.TextAreaFor(x => x.Question, new {@class = "form-control", row = "3"})
+                         @Html.ValidationMessageFor(model => model.Question)
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(x => x.Keyword)
+                         @Html.TextBoxFor(x => x.Keyword, new {@class = "form-control"})
+                         @Html.ValidationMessageFor(model => model.Keyword)
+                     </div>
+                 </div>
+                 <div class="panel-footer text-center">
+                     <button type="submit" class="btn btn-primary btn-lg">Войти в чат</button>
+                 </div>
+
+
+             </div>
+         }
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+@for $size from 0 through 10 {
+	.padding-#{$size} {
+		padding: #{$size}rem;
+	}
+
+	.padding-lr-#{$size} {
+		padding: 0 #{$size}rem;
+	}
+
+	.padding-r-#{$size} {
+		padding-right: #{$size}rem;
+	}
+
+	.padding-l-#{$size} {
+		padding-left: #{$size}rem;
+	}
+
+	.padding-tb-#{$size} {
+		padding: #{$size}rem 0;
+	}
+
+	.padding-t-#{$size} {
+		padding-top: #{$size}rem;
+	}
+
+	.padding-b-#{$size} {
+		padding-bottom: #{$size}rem;
+	}
+}

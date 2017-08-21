@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineConsultant.Models.QuestionUserModel>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center">Действие</th>
+            <th class="text-center">Имя пользователя</th>
+            <th class="text-center">Дата создания</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Вопрос</th>
+            <th class="text-center">Статус вопроса</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var question in Model)
+        {
+            <tr>
+                <th class="text-center">
+                    @if (question.IsOpen)
+                    {
+                        using (Ajax.BeginForm("QuestionClose", new AjaxOptions { UpdateTargetId = "test"}))
+                        {
+                            <input type="hidden" name="fromUser" value="@question.UserId" />
+                                    <button type="submit" class="btn btn-link">Закрыть</button>
+                        }
+                    }
+                </th>
+                <td>@question.FullName</td>
+                <td>@question.CreateTime</td>
+                <td>@question.Email</td>
+                <td>@question.Description</td>
+                <td class="@(question.IsOpen ? "text-success" : "text-danger" )">
+                    @(question.IsOpen ? "Открыт" : "Закрыт" )
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

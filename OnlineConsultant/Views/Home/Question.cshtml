@@ -1,0 +1,44 @@
+﻿@using OnlineConsultant.Models
+@model IEnumerable<QuestionUserModel>
+@{
+    ViewBag.Title = "Список задаваемых вопросов";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header text-center">
+            <h4>Список задаваемых вопросов</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="form-inline padding-1 pull-right">
+        @using (Ajax.BeginForm("FilterStateOfQuestion", new AjaxOptions { UpdateTargetId = "test", InsertionMode = InsertionMode.Replace }))
+        {
+            <div class="form-group">
+                <label for="stateOfQuestion">Статус вопроса:</label>
+                <select class="form-control" id="stateOfQuestion" name="state">
+                    <option value="1">Все</option>
+                    <option value="2">Только открытые</option>
+                    <option value="3">Только закрытые</option>
+                </select>
+
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Применить</button>
+        }    
+        </div>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-md-12" id="test">
+       @Html.Action("TableUserQuestions")
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+

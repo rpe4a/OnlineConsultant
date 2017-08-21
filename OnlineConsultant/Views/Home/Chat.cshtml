@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Чат";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Страница консультаций</h2>
+<div class="row">
+    <div class="col-md-8 col-xs-12 chat-content-conteiner">
+        <div class="panel panel-default">
+            <div id="ChatUserFrom" class="panel-heading">Ожидание...</div>
+            <div class="panel-body chat-main-window">
+                <div class="chat-main-window-item chat-body panel panel-default padding-1">
+                    <div class="chat-preview text-center">
+                        <h2>Мы рады приветствовать вас!</h2>
+                        <p>Вы подлючились к системе онлайн консультации, для продолжения работы Вам потребуется:</p>
+                        <ul class="text-justify">
+                            @if (ViewBag.IsSpec)
+                            {
+                                <li>Нажать на кнопку "Принять", чтобы получить вопрос из очереди;</li>
+                            }
+                            else
+                            {
+                                <li>Ваш вопрос попал в очередь;</li>
+                                <li>Ожидайте ответа специалиста;</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="chat-main-window-item chat-typing">
+                    <div class="input-group margin-b-1">
+                        <input type="hidden" id="UserFromId" />
+                        <input type="text" class="form-control" id="ChatMessage" placeholder="Ваще сообщение...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" id="SendMessageBtn" type="button" disabled>Отправить</button>
+                        </span>
+                    </div>
+                    @if (ViewBag.IsSpec)
+                    {
+                        <button class="btn btn-default btn-lg" id="GetNextUserBtn" type="button">Принять</button>
+                        <button class="btn btn-success hidden btn-lg" id="ResolverUserBtn" type="button">Обработано</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">@(ViewBag.IsSpec ? "Пользователи" : "Специалисты")</div>
+            <div class="panel-body chat-users">
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/dist/chat.js"></script>
+}

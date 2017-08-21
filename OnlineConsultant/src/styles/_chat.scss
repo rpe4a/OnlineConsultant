@@ -1,0 +1,62 @@
+$chatHeight_md:700px;
+$chatHeight_sm:500px;
+$chatHeight_xs:400px;
+%chat-window {
+    @include flex-direction(column);
+    min-height: $chatHeight_md;
+}
+
+%chat-window-overflow {
+    overflow-y: auto;
+    height: 1px;
+}
+
+.chat-main-window {
+    @include row-flex();
+    @extend %chat-window;
+    @include respond-to($break_sm) {
+        min-height: $chatHeight_sm;
+    }
+    @include respond-to($break_xs) {
+        min-height: $chatHeight_xs;
+    }
+    &-item {
+        @include col;
+        @include col-12;
+        @include align-content(stretch)
+    }
+    .chat-body {
+        position: relative;
+        @extend %chat-window-overflow;
+        @include flex-grow(100);
+        display: flex;
+        @include flex-wrap(nowrap);
+        @include flex-direction(column);
+        .chat-message {
+            word-break: break-all;
+            &-in {
+                @include align-self(flex-start)
+            }
+            &-out {
+                @include align-self(flex-end)
+            }
+        }
+        .chat-preview {
+            margin: auto;
+        }
+        .chat-alert {
+            width: 100%;
+        }
+    }
+    .chat-typing {
+        margin-bottom: 0;
+        margin-top: auto;
+    }
+}
+
+.chat-users {
+    display: flex;
+    @extend %chat-window;
+    @extend %chat-window-overflow;
+    @include flex-wrap(nowrap);
+}

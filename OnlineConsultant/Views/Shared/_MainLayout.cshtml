@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/dist/bundle.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                @Html.ActionLink("Юридическая онлайн косультация", "Index", "Home", null, new { @class = "navbar-brand" })
+                <img alt="Brand" width="32" height="32" src="~/images/baner.png">
+            </div>
+            <div class="collapse navbar-collapse">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Войти", "Login", "Account")
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"></span>  
+                                <span id="userName">@User.Identity.Name</span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                 @if (User.Identity.IsAuthenticated && User.IsSpec())
+                                 {
+                                    <li>@Html.ActionLink("Список вопросов", "Question", "Home")</li>
+                                 }
+                                <li>@Html.ActionLink("В чат", "Chat", "Home")</li>
+                                <li>@Html.ActionLink("Выйти", "Signout", "Account", null, new { Id = "SignOutBtn"})</li>
+                            </ul>
+                        </li>
+                       
+
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="~/dist/vendor.js"></script>
+    <script src="~/dist/bundle.js"></script>
+    
+    @RenderSection("scripts", false)
+</body>
+</html>
